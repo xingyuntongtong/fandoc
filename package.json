@@ -1,0 +1,43 @@
+{
+    "name": "fandoc-API",
+    "version": "0.0.1",
+    "description": "",
+    "keywords": [
+        ""
+    ],
+    "homepage": "http://JSLite.io",
+    "author": "xingyuntongtong <623415329@qq.com>",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "licenses": "MIT",
+    "idoc": {
+        "theme": "blog",
+        "md": [
+            "index.md",
+            {
+                "fandoc": [
+                    "fandoc文档.md"
+                ]
+            },
+            {
+                "node": [
+                    "node基础.md",
+                    "git的使用.md",
+                    "node里的buffer.md",
+                    "node里的模块.md",
+                    "npm.md"
+                ]
+            },
+            {
+                "angular": [
+                    "angular中的指令.md",
+                    "angular基础知识.md",
+                    "自定义服务.md",
+                    "路由-route.md"
+                ]
+            }
+        ]
+    }
+}

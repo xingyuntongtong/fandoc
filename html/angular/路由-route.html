@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fandoc-API</title>
+        
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+</head>
+<body>
+<div class="navbar navbar-line">
+    <div class="container">
+        <div class="logos"></div>
+        <div class="logo">
+
+            
+                fandoc-API
+            
+        </div>
+        <input type="checkbox" id="idoc_nav" />
+        <div class="menu_tree">
+        <ul><li><a href="../../index.html">index</a></li><li><a href="#"><span></span>fandoc</a><ul><li><a href="../../html/fandoc/fandoc文档.html">fandoc文档</a></li></ul></li><li><a href="#"><span></span>node</a><ul><li><a href="../../html/node/node基础.html">node基础</a></li><li><a href="../../html/node/git的使用.html">git的使用</a></li><li><a href="../../html/node/node里的buffer.html">node里的buffer</a></li><li><a href="../../html/node/node里的模块.html">node里的模块</a></li><li><a href="../../html/node/npm.html">npm</a></li></ul></li><li><a href="#"><span></span>angular</a><ul><li><a href="../../html/angular/angular中的指令.html">angular中的指令</a></li><li><a href="../../html/angular/angular基础知识.html">angular基础知识</a></li><li><a href="../../html/angular/自定义服务.html">自定义服务</a></li><li class="active"><a href="../../html/angular/路由-route.html">路由-route</a></li></ul></li></ul>
+        </div>
+
+        
+
+        <section class="idoc_nav_btn">
+            <label for="idoc_nav"><span></span></label>
+        </section>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="container">
+    
+        <div class="page-toc">
+            <ul><li><a href="#t0什么是路由?">什么是路由?</a></li><li><a href="#t11.ng-route路由">1.ng-route路由</a><ul><li><a href="#t21.1 安装路由">1.1 安装路由</a></li><li><a href="#t31.2 依赖模块">1.2 依赖模块</a></li><li><a href="#t41.3 使用 ngView 指令">1.3 使用 ngView 指令</a></li><li><a href="#t51.4 配置路由">1.4 配置路由</a></li><li><a href="#t61.5 创建路由链接">1.5 创建路由链接</a></li></ul></li><li><a href="#t72.angular-ui-route  可以实现多应用它更强大">2.angular-ui-route  可以实现多应用它更强大</a><ul><li><a href="#t82.1 安装路由">2.1 安装路由</a></li><li><a href="#t92.2 依赖模块">2.2 依赖模块</a></li><li><a href="#t102.3 使用 uiView 指令">2.3 使用 uiView 指令</a></li><li><a href="#t112.4 配置路由">2.4 配置路由</a></li><li><a href="#t122.5 创建路由链接">2.5 创建路由链接</a></li></ul></li></ul>
+        </div>
+
+        <div class="content markdown-body">
+
+            <h2 id="t0&#x4EC0;&#x4E48;&#x662F;&#x8DEF;&#x7531;?">&#x4EC0;&#x4E48;&#x662F;&#x8DEF;&#x7531;? <a href="#t0&#x4EC0;&#x4E48;&#x662F;&#x8DEF;&#x7531;?"> # </a></h2>
+<ul>
+<li>AngularJS &#x8DEF;&#x7531;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684; URL &#x8BBF;&#x95EE;&#x4E0D;&#x540C;&#x7684;&#x5185;&#x5BB9;&#x3002;</li>
+<li>&#x901A;&#x8FC7; AngularJS &#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x89C6;&#x56FE;&#x7684;&#x5355;&#x9875;Web&#x5E94;&#x7528;&#xFF08;single page web application&#xFF0C;SPA&#xFF09;&#x3002;</li>
+<li>&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x7684;URL&#x5F62;&#x5F0F;&#x4E3A; <a href="http://runoob.com/first/page">http://runoob.com/first/page</a> &#x4F46;&#x5728;&#x5355;&#x9875;Web&#x5E94;&#x7528;&#x4E2D; AngularJS &#x901A;&#x8FC7; # + &#x6807;&#x8BB0; &#x5B9E;&#x73B0;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;<pre><code>http://runoob.com/#/first
+http://runoob.com/#/second
+http://runoob.com/#/third
+</code></pre>&#x5F53;&#x6211;&#x4EEC;&#x70B9;&#x51FB;&#x4EE5;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x94FE;&#x63A5;&#x65F6;&#xFF0C;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x8BF7;&#x7684;&#x5730;&#x5740;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684; (<a href="http://runoob.com/">http://runoob.com/</a>) &#x56E0;&#x4E3A; # &#x53F7;&#x4E4B;&#x540E;&#x7684;&#x5185;&#x5BB9;&#x5728;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x8BF7;&#x6C42;&#x65F6;&#x4F1A;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x5FFD;&#x7565;&#x6389;&#x3002; &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x5B9E;&#x73B0; # &#x53F7;&#x540E;&#x9762;&#x5185;&#x5BB9;&#x7684;&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x3002; AngularJS &#x8DEF;&#x7531; &#x5C31;&#x901A;&#x8FC7; #, + &#x6807;&#x8BB0; &#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x903B;&#x8F91;&#x9875;&#x9762;&#x5E76;&#x5C06;&#x4E0D;&#x540C;&#x7684;&#x9875;&#x9762;&#x7ED1;&#x5B9A;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x63A7;&#x5236;&#x5668;&#x4E0A;&#x3002;</li>
+</ul>
+<h2 id="t11.ng-route&#x8DEF;&#x7531;">1.ng-route&#x8DEF;&#x7531; <a href="#t11.ng-route&#x8DEF;&#x7531;"> # </a></h2>
+<p>&#x5C5E;&#x6027;&#x5355;&#x9875;&#x9762;&#x5E94;&#x7528; angular-route&#x5B83;&#x662F;angular&#x81EA;&#x5E26;&#x7684;&#x8DEF;&#x7531;&#x6A21;&#x5757;</p>
+<h3 id="t21.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531;">1.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531; <a href="#t21.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531;"> # </a></h3>
+<pre><code>npm install angular-route
+</code></pre><h3 id="t31.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757;">1.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757; <a href="#t31.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757;"> # </a></h3>
+<ul>
+<li>&#x8BA9;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x4E8E;ngRoute<pre><code>var myMod = angular.module(&apos;myMod&apos;,[&apos;ngRoute&apos;]);
+</code></pre><h3 id="t41.3 &#x4F7F;&#x7528; ngView &#x6307;&#x4EE4;">1.3 &#x4F7F;&#x7528; ngView &#x6307;&#x4EE4; <a href="#t41.3 &#x4F7F;&#x7528; ngView &#x6307;&#x4EE4;"> # </a></h3>
+</li>
+<li>ng-view&#x5FC5;&#x987B;&#x6709;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x9875;&#x9762;&#x90FD;&#x662F;&#x6E32;&#x67D3;&#x5230;&#x8BE5;&#x6807;&#x7B7E;&#x4E2D;&#x7684;,&#x53EA;&#x6709;&#x5B83;&#x91CC;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x53D8;&#x5316;&#x7684;</li>
+<li>&#x8BE5; div &#x5185;&#x7684; HTML &#x5185;&#x5BB9;&#x4F1A;&#x6839;&#x636E;&#x8DEF;&#x7531;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#x3002;<pre><code>&lt;div ng-view&gt;&lt;/div&gt;
+</code></pre><h3 id="t51.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531;">1.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531; <a href="#t51.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531;"> # </a></h3>
+</li>
+<li>when: &#x5C31;&#x662F;&#x5F53;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x7684;&#x8DEF;&#x5F84;&#x662F;&#x54EA;&#x4E2A;&#x7684;&#x65F6;&#x5019;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF1B;&#x53C2;&#x6570;1&#xFF1A;path &#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x7684;&#x8DEF;&#x5F84; &#x53C2;&#x6570;2&#xFF1A;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF1B;&#x5B83;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x94FE;&#x5F0F;&#x64CD;&#x4F5C;,&#x53EF;&#x4EE5;&#x94FE;&#x63A5;&#x591A;&#x4E2A;when</li>
+<li>AngularJS &#x6A21;&#x5757;&#x7684; config &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528; configAPI&#xFF0C;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x628A;$routeProvider&#x6CE8;&#x5165;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x914D;&#x7F6E;&#x51FD;&#x6570;&#x5E76;&#x4E14;&#x4F7F;&#x7528;$routeProvider.whenAPI&#x6765;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x7684;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x3002;</li>
+<li>$routeProvider &#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86; when(path,object) &#x548C; otherwise(object) &#x51FD;&#x6570;&#x6309;&#x987A;&#x5E8F;&#x5B9A;&#x4E49;&#x6240;&#x6709;&#x8DEF;&#x7531;<pre><code>myMod.config(function($routeProvider){
+      $routeProvider.when(&apos;/&apos;,{
+          template:&apos;&lt;h1&gt;index&lt;/h1&gt;&apos;,//&#x5B9A;&#x4E49;&#x9700;&#x8981;&#x7684;&#x6A21;&#x677F;
+      }).when(&apos;/users&apos;,{
+          templateUrl:&apos;usesr.html&apos;,
+          controller:[&apos;$scope&apos;,&apos;add&apos;,function($scope,add){
+              //&#x63A7;&#x5236;&#x5668;:&#x5B83;&#x63A7;&#x5236;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x4E0B;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x63A7;&#x5236;&#x5668;&#x4E86;&#x5728;&#x6A21;&#x677F;&#x91CC;&#x5C31;&#x4E0D;&#x7528;&#x5199;&#x4E86;
+              //$scope.users=[&apos;tongtong&apos;,&apos;haha&apos;,&apos;hehe&apos;];
+              //&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;
+              $scope.users=[{id:1,name:&apos;tongtong&apos;},{id:2,name:&apos;haha&apos;},{id:3,name:&apos;hehe&apos;}];
+              $scope.result=add(1,2);
+          }],
+          resolve:{//&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61; &#x76F8;&#x5F53;&#x4E8E;factory &#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x670D;&#x52A1;,&#x8FD9;&#x91CC;&#x9762;&#x7684;add&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x670D;&#x52A1;
+              add:function(){//&#x6307;&#x5B9A;&#x5F53;&#x524D;controller&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x3002;
+                  return function(a,b){
+                      return a+b;
+                  }
+              }
+          }
+      }).when(&apos;/user/:id&apos;,{
+            // /user/1   /user/2    /user/3
+            template:&apos;&#x6211;&#x7684;ID&#x53F7;&#x662F;{{id}}&apos;,
+            controller: function ($scope, $routeParams) {
+          //$routeParams &#x8DEF;&#x7531;&#x53C2;&#x6570;&#xFF08;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF09; &#x80FD;&#x591F;&#x83B7;&#x53D6;&#x5230;&#x5192;&#x53F7;&#x540E;&#x9762;&#x7684;&#x503C;
+                $scope.id = $routeParams.id
+            }
+        }).otherwise({
+            redirectTo:&apos;/&apos;;//&#x610F;&#x601D;&#x662F;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x8DEF;&#x5F84;&#xFF0C;&#x5F53;&#x8F93;&#x5165;&#x9519;&#x8BEF;&#x65F6;&#x76F4;&#x63A5;&#x56DE;&#x5230; / &#x5B83;&#x7684;&#x9875;&#x9762;&#x4E0A; &#x4E24;&#x79CD;&#x5199;&#x6CD5;
+        })
+  });
+</code></pre><h3 id="t61.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5;">1.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5; <a href="#t61.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5;"> # </a></h3>
+<pre><code>&lt;a href=&quot;#/home&quot;&gt;&#x9996;&#x9875;&lt;/a&gt;
+&lt;a href=&quot;#/user/{{user.id}}&quot;&gt;&#x7528;&#x6237;&#x7BA1;&#x7406; &#x6216;&#x8005;{{user.name}}&lt;/a&gt;
+&lt;a href=&quot;#/contact&quot;&gt;&#x8054;&#x7CFB;&lt;/a&gt;
+&lt;a href=&quot;#/settings&quot;&gt;&#x8BBE;&#x7F6E;&lt;/a&gt;
+&lt;div ng-view&gt;&lt;/div&gt;
+</code></pre>&#x5B9E;&#x73B0;&#x70B9;&#x51FB;&#x53EF;&#x4EE5;&#x8DF3;&#x8F6C;&#x76F8;&#x5E94;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x5B83;&#x5237;&#x65B0;&#x7684;&#x53EA;&#x662F;ng-view&#x8FD9;&#x4E00;&#x5757;&#xFF0C;&#x5176;&#x5B83;&#x7684;&#x4E0D;&#x6539;&#x53D8; &#x5FC5;&#x987B;&#x6709;# &#x9632;&#x6B62;&#x9875;&#x9762;&#x7684;&#x8DF3;&#x8F6C;</li>
+</ul>
+<h2 id="t72.angular-ui-route  &#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x5E94;&#x7528;&#x5B83;&#x66F4;&#x5F3A;&#x5927;">2.angular-ui-route  &#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x5E94;&#x7528;&#x5B83;&#x66F4;&#x5F3A;&#x5927; <a href="#t72.angular-ui-route  &#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x5E94;&#x7528;&#x5B83;&#x66F4;&#x5F3A;&#x5927;"> # </a></h2>
+<h3 id="t82.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531;">2.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531; <a href="#t82.1 &#x5B89;&#x88C5;&#x8DEF;&#x7531;"> # </a></h3>
+<pre><code>npm install angular-ui-router
+</code></pre><h3 id="t92.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757;">2.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757; <a href="#t92.2 &#x4F9D;&#x8D56;&#x6A21;&#x5757;"> # </a></h3>
+<ul>
+<li>&#x8BA9;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#x4E8E;uiRouter<pre><code>var myMod = angular.module(&apos;myMod&apos;, [&apos;ui.router&apos;]);
+</code></pre><h3 id="t102.3 &#x4F7F;&#x7528; uiView &#x6307;&#x4EE4;">2.3 &#x4F7F;&#x7528; uiView &#x6307;&#x4EE4; <a href="#t102.3 &#x4F7F;&#x7528; uiView &#x6307;&#x4EE4;"> # </a></h3>
+</li>
+<li>ui-view&#x5FC5;&#x987B;&#x6709;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x9875;&#x9762;&#x90FD;&#x662F;&#x6E32;&#x67D3;&#x5230;&#x8BE5;&#x6807;&#x7B7E;&#x4E2D;&#x7684;,&#x53EA;&#x6709;&#x5B83;&#x91CC;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x53D8;&#x5316;&#x7684;</li>
+<li>&#x8BE5; div &#x5185;&#x7684; HTML &#x5185;&#x5BB9;&#x4F1A;&#x6839;&#x636E;&#x8DEF;&#x7531;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#x3002;<pre><code>&lt;div ui-view&gt;&lt;/div&gt;
+</code></pre><h3 id="t112.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531;">2.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531; <a href="#t112.4 &#x914D;&#x7F6E;&#x8DEF;&#x7531;"> # </a></h3>
+</li>
+<li>state &#x548C; when &#x5DEE;&#x4E0D;&#x591A;<pre><code>myMod.config(function($stateProvider,$urlRouterProvider){
+  $urlRouterProvider.otherwise(&apos;/&apos;);
+  //&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x4E0B;&#x8C03;&#x7528;otherwise,&#x4E0D;&#x7136;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x521A;&#x6253;&#x5F00;&#x9875;&#x9762;&#x5C31;&#x663E;&#x793A;&#x5185;&#x5BB9;
+  $stateProvider.state(&apos;index&apos;,{
+      //&#x53C2;&#x6570;1&#xFF1A;&#x662F;&#x72B6;&#x6001;&#x7684;&#x540D;&#x5B57;  &#x53C2;&#x6570;2&#xFF1A; &#x914D;&#x7F6E;&#x7684;&#x5BF9;&#x8C61;
+      url:&apos;/&apos;,//&#x4EE3;&#x8868;&#x8DEF;&#x7531; &#x5FC5;&#x987B;&#x5199;,&#x6BCF;&#x4E2A;&#x91CC;&#x9762;&#x90FD;&#x5F97;&#x5199;&#x4E0D;&#x7136;&#x5728;&#x641C;&#x7D22;&#x680F;&#x91CC;&#x4E0D;&#x663E;&#x793A;
+      templateUrl:&apos;index.html&apos;
+  }).state(&apos;about&apos;,{
+      url:&apos;/about&apos;,//&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#xFF0C;&#x8DEF;&#x5F84;&#x4E0D;&#x8981;&#x91CD;&#x590D;
+      templateUrl:&apos;about.html&apos;,
+      controller:function($scope){
+          $scope.books = [{id: 1, name: &apos;js&#x9AD8;&#x7A0B;3&apos;},{id: 2, name: &apos;node&apos;},{id: 3, name: &apos;html5&apos;}];
+      }
+  }).state(&apos;contact&apos;,{
+      url:&apos;/contact&apos;,
+      views:{//&#x914D;&#x7F6E;&#x591A;&#x89C6;&#x56FE;&#xFF0C;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x91CC;&#x9762;&#x6709;&#x591A;&#x4E2A;&#x8DEF;&#x7531;
+          &apos;&apos;:{
+            //&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x4E0B;&#x6E32;&#x67D3;&#x8BE5;&#x6A21;&#x677F;
+             templateUrl:&apos;templs/contact.html&apos;
+          } ,
+          &apos;tel@contact&apos;:{
+             //tel@contact
+             //contact&#x72B6;&#x6001;&#x5BF9;&#x5E94;&#x7684;templs/contact.html&#x9875;&#x9762;&#x4E2D;&#x7684; ui-view = &#x2018;tel&#x2019;&#x89C6;&#x56FE; &#xFF0C;&#x6E32;&#x67D3;&#x7684;&#x662F;templateUrl:&apos;templs/tel.html&apos;
+              templateUrl:&apos;templs/tel.html&apos;,
+              controller: function ($scope) {
+                  $scope.tel=&apos;12345&apos;
+              }
+          },
+          &apos;address@contact&apos;:{
+              templateUrl:&apos;templs/address.html&apos;
+          }
+      }
+  }).state(&apos;book&apos;,{
+        url:&apos;/book/:name&apos;,
+        template:&apos;{{a}}&apos;,
+        controller: function ($scope,$stateParams) {
+            //$stateParams&#x5BF9;&#x8C61; &#x83B7;&#x53D6;&#x5192;&#x53F7;&#x540E;&#x9762;&#x7684;&#x503C;
+            $scope.a=$stateParams.name
+        }
+    })
+}).controller(&apos;myCtrl&apos;,function($scope){
+  $scope.flag=&apos;index&apos;;
+})
+</code></pre><h3 id="t122.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5;">2.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5; <a href="#t122.5 &#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x94FE;&#x63A5;"> # </a></h3>
+</li>
+<li><pre><code>&lt;a ui-sref=&quot;home&quot;&gt;&#x9996;&#x9875;&lt;/a&gt;
+&lt;a ui-sref=&quot;book({name:book.name})&quot;&gt;&#x7528;&#x6237; &#x6216;&#x8005;{{book.name}} &lt;/a&gt;
+&lt;a ui-sref=&quot;contact&quot;&gt;&#x8054;&#x7CFB;&lt;/a&gt;
+&lt;div ui-view&gt;&lt;/div&gt;
+</code></pre></li>
+</ul>
+
+
+        </div>
+    
+</div>
+<style>
+    .page-toc{
+        overflow: hidden;
+        position:fixed;
+        left:50%;
+        margin-left:250px;
+	width:350px
+    }
+    .page-toc > ul li{
+        list-style-position: inside;
+	line-height:120%
+    }
+    .page-toc > ul{
+        transition: all 0.2s;
+        position: relative;
+    }
+    .page-toc > ul a {
+	color:#009a61;
+	font-size:110% ! important;
+	line-height:120%
+    }
+    .page-toc > ul .red{
+        background: #f3f3f3;
+        z-index: 1;
+        border-left: 3px solid #009a61;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+	color:#000
+    }
+
+    .markdown-body{
+	font-size: 120% ! important;
+        max-width:800px;
+    }
+    .container{
+       font-size: 110% ! important;
+    }
+    html,body,.container{
+      font-family: Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif ! important;
+    }
+    /*url("/static/img/banner.jpg") no-repeat*/
+    .bs-docs-header{
+        background:linear-gradient(to right ,#333333 50%,#0d0b0c 50%) ;
+        padding: 0;
+    }
+    .new-back{
+        background-image: url("static/img/banner.jpg") ;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 88px;
+    }
+    .markdown-body pre code,.markdown-body code{
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .markdown-body code{
+      line-height: inherit;
+    }
+    .markdown-body h3{
+        font-size:1.4em;
+    }
+    .markdown-body h4{
+        font-size:1em;
+    }
+
+
+
+    /*index*/
+    .jw-style{
+        font-size: 1.75em;
+        color: #1d3e81;
+        line-height: 2em;
+    }
+
+    .understand-me {
+        text-align: center;
+        margin: 100px auto 0;
+    }
+
+    .understand-me li {
+        vertical-align: top;
+        width: 33.3333%;
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        text-align: center;
+    }
+
+    .understand-me li span {
+        color: #1a1a1a;
+        font-size: 1.6em;
+
+    }
+
+    .understand-me p {
+        margin: 0 auto;
+        width: 90%;
+        text-align: left;
+        color: #4c4c4c;
+        font-size: 1em;
+        line-height: 1.2em;
+    }
+
+    .understand-me img {
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        -ms-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    .footers{
+        background:#0a0a0a url('static/img/footer.jpg') no-repeat center center;height: 248px; margin-top: 40px
+    }
+    .understand-me img:hover {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    @media screen and (max-width: 479px) {
+        .understand-me li{
+            width: 100%;
+            margin-bottom: 2em;
+        }
+        .new-back{
+            padding: 28px;
+        }
+        .understand-me p {
+            width: 60%;
+        }
+        .footers{
+            height: 80px;
+            background-size:auto 100%;;
+        }
+    }
+
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+<script>
+if(!$('.understand-me').length){
+var bar = $(window).height() - $('.navbar ').height() - $('.page-toc').position().top;
+var count =  bar/26/2;
+var barHeight = $('.page-toc').outerHeight();
+$('.page-toc li').eq(0).children('a').addClass('red');
+var arr = [];
+$("h1,h2,h3,h4,h5,h6").each(function () {
+    arr.push($(this).position().top);
+});
+if(!($(window).height()-50 > barHeight)){
+    var flagTop = true;
+}
+function dark(){
+    var top =  Math.abs($('.page-toc > ul').position().top);
+    var cur = $(document).scrollTop();
+    for(var i = arr.length; i >=0;i--){
+        if(arr[i]<=cur){
+            break;
+        }
+    }
+    if(i===-1){
+        i = 0;
+    }
+    $('.page-toc li a').removeClass('red');
+    $('.page-toc li').eq(i).children('a').addClass('red');
+    if(flagTop){
+      if(i> arr.length-count){
+          $(' .page-toc > ul').css('top',-(barHeight-bar));
+          return;
+      }
+      if(i>count){
+          $(' .page-toc > ul').css('top',-26*(i-count));
+      }else{
+          $(' .page-toc > ul').css('top',0);
+      }
+    }
+}
+$(window).on('scroll',dark);
+}
+</script>
+
+</body>
+</html>
+
+
+<script>
+
+</script>
